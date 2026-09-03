@@ -33,4 +33,7 @@ export class SignupPage {
         this.registerButton = page.getByTestId('register-submit');
     }
 
+    async registerUnsuccessfully() {
+        await this.registerButton.click();
+    }    
 }
