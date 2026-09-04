@@ -1,7 +1,7 @@
 export const users = {
     valid: {
-        email: 'customer@practicesoftwaretesting.com',
-        password: 'welcome01'
+        email: 'customer3@practicesoftwaretesting.com',
+        password: 'pass123'
     },
 
     wrongEmail: {
