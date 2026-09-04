@@ -14,3 +14,53 @@ export const users = {
         password: 'wrongpassword'
     }
 };
+
+export const generateEmail = () =>
+    `testuser${Date.now()}@example.com`;
+
+export const newUser = { 
+    valid: () => ({
+        firstName: 'Test',
+        lastName: 'Test',
+        dateOfBirth: '1999/01/01',
+        countryDropdown: 'GB',
+        postCode: '12345',
+        houseNumber: '221',
+        street: 'Baker Street',
+        city: 'London',
+        state: 'London',
+        phoneNumber: '123456789',
+        email: generateEmail(),
+        password: 'ValidPassword123!'
+    }),
+
+    existingEmail: {
+        firstName: 'Test',
+        lastName: 'Test',
+        dateOfBirth: '1999/01/01',
+        countryDropdown: 'GB',
+        postCode: '12345',
+        houseNumber: '221',
+        street: 'Baker Street',
+        city: 'London',
+        state: 'London',
+        phoneNumber: '123456789',
+        email: 'customer@practicesoftwaretesting.com',
+        password: 'ValidPassword123!'
+    },
+
+    invalidPassword: () => ({
+        firstName: 'Test',
+        lastName: 'Test',
+        dateOfBirth: '1999/01/01',
+        countryDropdown: 'GB',
+        postCode: '12345',
+        houseNumber: '221',
+        street: 'Baker Street',
+        city: 'London',
+        state: 'London',
+        phoneNumber: '123456789',
+        email: generateEmail(),
+        password: '1234'
+    }),
+}

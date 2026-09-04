@@ -33,6 +33,35 @@ export class SignupPage {
         this.registerButton = page.getByTestId('register-submit');
     }
 
+    async registerNewUser(newUser: {
+        firstName: string;
+        lastName: string;
+        dateOfBirth: string;
+        countryDropdown: string;
+        postCode: string;
+        houseNumber: string;
+        street: string;
+        city: string;
+        state: string;
+        phoneNumber: string;
+        email: string;
+        password: string;       
+    }) {
+        await this.firstNameInput.fill(newUser.firstName);
+        await this.lastNameInput.fill(newUser.lastName);
+        await this.dateOfBirthInput.fill(newUser.dateOfBirth);
+        await this.countryDropdown.selectOption(newUser.countryDropdown);
+        await this.postcodeInput.fill(newUser.postCode);
+        await this.houseNumberInput.fill(newUser.houseNumber);
+        await this.streetInput.fill(newUser.street);
+        await this.cityInput.fill(newUser.city);
+        await this.stateInput.fill(newUser.state);
+        await this.phoneNumberInput.fill(newUser.phoneNumber);
+        await this.emailInput.fill(newUser.email);
+        await this.passwordInput.fill(newUser.password);
+        await this.registerButton.click();
+    }
+
     async registerUnsuccessfully() {
         await this.registerButton.click();
     }    
