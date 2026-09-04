@@ -22,7 +22,7 @@ export const newUser = {
     valid: () => ({
         firstName: 'Test',
         lastName: 'Test',
-        dateOfBirth: '1999/01/01',
+        dateOfBirth: '1999-01-01',
         countryDropdown: 'GB',
         postCode: '12345',
         houseNumber: '221',
@@ -31,13 +31,13 @@ export const newUser = {
         state: 'London',
         phoneNumber: '123456789',
         email: generateEmail(),
-        password: 'ValidPassword123!'
+        password: 'ValidPassword987!!'
     }),
 
     existingEmail: {
         firstName: 'Test',
         lastName: 'Test',
-        dateOfBirth: '1999/01/01',
+        dateOfBirth: '1999-01-01',
         countryDropdown: 'GB',
         postCode: '12345',
         houseNumber: '221',
@@ -45,14 +45,14 @@ export const newUser = {
         city: 'London',
         state: 'London',
         phoneNumber: '123456789',
-        email: 'customer@practicesoftwaretesting.com',
-        password: 'ValidPassword123!'
+        email: 'customer2@practicesoftwaretesting.com',
+        password: 'ValidPassword987!!'
     },
 
     invalidPassword: () => ({
         firstName: 'Test',
         lastName: 'Test',
-        dateOfBirth: '1999/01/01',
+        dateOfBirth: '1999-01-01',
         countryDropdown: 'GB',
         postCode: '12345',
         houseNumber: '221',

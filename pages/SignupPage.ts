@@ -15,6 +15,8 @@ export class SignupPage {
   readonly emailInput: Locator;
   readonly passwordInput: Locator;
   readonly registerButton: Locator;
+  readonly registerError: Locator;
+  readonly passwordError: Locator; 
 
     constructor(page: Page) {
         this.page = page;
@@ -31,6 +33,8 @@ export class SignupPage {
         this.emailInput = page.getByPlaceholder('Your email *');
         this.passwordInput = page.getByPlaceholder('Your password');
         this.registerButton = page.getByTestId('register-submit');
+        this.registerError = page.getByTestId('register-error');
+        this.passwordError = page.getByTestId('password-error');
     }
 
     async registerNewUser(newUser: {
