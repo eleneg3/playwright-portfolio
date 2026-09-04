@@ -1,7 +1,6 @@
 import { test, expect } from '@playwright/test';
-import { SignupPage } from '../pages/SignupPage';
-import { generateEmail } from '../utils/testData';
-import { newUser } from '../utils/testData';
+import { SignupPage } from '../../pages/SignupPage';
+import { newUser } from '../../utils/testData';
 
 test.describe('Signup', () => {
 
