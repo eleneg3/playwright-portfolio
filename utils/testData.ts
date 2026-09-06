@@ -64,3 +64,28 @@ export const newUser = {
         password: '1234'
     }),
 }
+
+export const categories = [
+    'Hand Tools',
+    'Power Tools',
+    'Other',
+];
+
+export const subcategories = [
+    'Hammer',
+    'Hand Saw',
+    'Wrench',
+    'Screwdriver',
+    'Pliers',
+    'Chisels',
+    'Measures',
+    'Grinder',
+    'Sander',
+    'Saw',
+    'Drill',
+    'Tool Belts',
+    'Storage Solutions',
+    'Workbench',
+    'Safety Gear',
+    'Fasteners',
+]
