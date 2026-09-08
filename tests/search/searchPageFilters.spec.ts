@@ -13,7 +13,7 @@ test.describe('Search Page Filters', () => {
             const searchPage = new SearchPage(page);
             await page.goto('/');
             await searchPage.selectCategory(category);
-            await expect(searchPage.category(category)).toBeChecked;
+            await expect(searchPage.category(category)).toBeChecked();
     });
     }
 
@@ -22,7 +22,7 @@ test.describe('Search Page Filters', () => {
             const searchPage = new SearchPage(page);
             await page.goto('/');
             await searchPage.selectCategory(subcategory);
-            await expect(searchPage.category(subcategory)).toBeChecked;
+            await expect(searchPage.category(subcategory)).toBeChecked();
     });
     }
 
