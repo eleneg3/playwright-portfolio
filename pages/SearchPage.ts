@@ -13,4 +13,14 @@ export class SearchPage {
   async selectCategory(name: string) {
     await this.category(name).check();
   }
+
+  async getDisplayedProductIds(): Promise<string[]> {
+    return this.page
+        .locator('a[data-test^="product-"]')
+        .evaluateAll(products =>
+            products.map(product =>
+                product.getAttribute('data-test')!.replace('product-', '')
+            )
+        );
+}
 }

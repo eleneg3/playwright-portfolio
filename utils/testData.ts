@@ -63,7 +63,7 @@ export const newUser = {
         email: generateEmail(),
         password: '1234'
     }),
-}
+};
 
 export const categories = [
     'Hand Tools',
@@ -88,4 +88,4 @@ export const subcategories = [
     'Workbench',
     'Safety Gear',
     'Fasteners',
-]
+];
