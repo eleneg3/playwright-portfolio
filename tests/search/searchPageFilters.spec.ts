@@ -9,7 +9,7 @@ test.describe('Search Page Filters', () => {
     });
 
     for (const category of categories) {
-        test(`user can filter by ${category}`, async ({ page }) => {
+        test(`User can select ${category} in the side menu`, async ({ page }) => {
             const searchPage = new SearchPage(page);
             await page.goto('/');
             await searchPage.selectCategory(category);
@@ -18,7 +18,7 @@ test.describe('Search Page Filters', () => {
     }
 
     for (const subcategory of subcategories) {
-        test(`user can filter by ${subcategory}`, async ({ page }) => {
+        test(`User can select ${subcategory} in the side menu`, async ({ page }) => {
             const searchPage = new SearchPage(page);
             await page.goto('/');
             await searchPage.selectCategory(subcategory);
@@ -26,26 +26,7 @@ test.describe('Search Page Filters', () => {
     });
     }
 
-    test('user can filter products by subcategory', async ({ page }) => {
-        const searchPage = new SearchPage(page);
-        await page.goto('/');
-        const responsePromise = page.waitForResponse(response =>
-            response.url() === 'https://api.practicesoftwaretesting.com/products' &&
-            response.request().method() === 'QUERY' &&
-            response.ok()
-        );
-        await searchPage.selectCategory('Chisels');
-        const response = await responsePromise;
-        const apiResponse = await response.json();
-        await expect(searchPage.category('Chisels')).toBeChecked();
-        const uiProductIds = await searchPage.getDisplayedProductIds();
-        const apiProductIds = apiResponse.data.map(
-            (product: { id: string }) => product.id
-        );
-        expect(uiProductIds).toEqual(apiProductIds);
-    });
-
-    test('user can filter products by category', async ({ page }) => {
+    test('Click on category in the side menu filters the items by category', async ({ page }) => {
         const searchPage = new SearchPage(page);
         await page.goto('/');
         const responsePromise = page.waitForResponse(response =>
@@ -63,5 +44,24 @@ test.describe('Search Page Filters', () => {
         );
         expect(uiProductIds).toEqual(apiProductIds);
     });    
+
+    test('Click on subcategory in the side menu filters the items by subcategory', async ({ page }) => {
+        const searchPage = new SearchPage(page);
+        await page.goto('/');
+        const responsePromise = page.waitForResponse(response =>
+            response.url() === 'https://api.practicesoftwaretesting.com/products' &&
+            response.request().method() === 'QUERY' &&
+            response.ok()
+        );
+        await searchPage.selectCategory('Chisels');
+        const response = await responsePromise;
+        const apiResponse = await response.json();
+        await expect(searchPage.category('Chisels')).toBeChecked();
+        const uiProductIds = await searchPage.getDisplayedProductIds();
+        const apiProductIds = apiResponse.data.map(
+            (product: { id: string }) => product.id
+        );
+        expect(uiProductIds).toEqual(apiProductIds);
+    });
 });
 
