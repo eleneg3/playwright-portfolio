@@ -1,7 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { SearchPage } from '../../pages/SearchPage';
 import { categories, subcategories } from '../../utils/testData';
-import { ProductApi } from '../../api/ApiHelper';
 
 test.describe('Search Page Filters', () => {
 
