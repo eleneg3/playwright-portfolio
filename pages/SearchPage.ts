@@ -11,7 +11,9 @@ export class SearchPage {
     this.page.getByLabel(name, { exact: true });
 
   async selectCategory(name: string) {
-    await this.category(name).check();
+    const categoryCheckbox = this.category(name);
+    await categoryCheckbox.waitFor({ state: 'visible' });
+    await categoryCheckbox.check();
   }
 
   async getDisplayedProductIds(): Promise<string[]> {
