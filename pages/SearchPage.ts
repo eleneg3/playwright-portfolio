@@ -10,6 +10,9 @@ export class SearchPage {
   readonly category = (name: string) =>
     this.page.getByLabel(name, { exact: true });
 
+  readonly brand = (name: string) => 
+    this.page.getByLabel(name, {exact: true});
+
   async selectCategory(name: string) {
     const categoryCheckbox = this.category(name);
     await categoryCheckbox.waitFor({ state: 'visible' });
@@ -24,5 +27,11 @@ export class SearchPage {
                 product.getAttribute('data-test')!.replace('product-', '')
             )
         );
-}
+    }
+
+  async selectBrand(name: string) {
+    const brandCheckbox = this.brand(name);
+    await brandCheckbox.waitFor({ state: 'visible' });
+    await brandCheckbox.check();
+  }    
 }

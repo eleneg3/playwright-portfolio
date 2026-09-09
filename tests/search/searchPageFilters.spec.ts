@@ -63,5 +63,24 @@ test.describe('Search Page Filters', () => {
         );
         expect(uiProductIds).toEqual(apiProductIds);
     });
+
+    test('Click on brand in the side menu filters the items by brand', async ({ page }) => {
+        const searchPage = new SearchPage(page);
+        await page.goto('/');
+        const responsePromise = page.waitForResponse(response =>
+            response.url() === 'https://api.practicesoftwaretesting.com/products' &&
+            response.request().method() === 'QUERY' &&
+            response.ok()
+        );
+        await searchPage.selectBrand('ForgeFlex Tools');
+        const response = await responsePromise;
+        const apiResponse = await response.json();
+        await expect(searchPage.brand('ForgeFlex Tools')).toBeChecked();
+        const uiProductIds = await searchPage.getDisplayedProductIds();
+        const apiBrandIds = apiResponse.data.map(
+            (product: { id: string }) => product.id
+        );
+        expect(uiProductIds).toEqual(apiBrandIds);
+    });    
 });
 
