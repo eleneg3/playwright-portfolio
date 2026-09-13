@@ -21,11 +21,16 @@ export class ProductPage {
             this.cartItemCount = page.getByTestId('cart-quantity');
         }
 
+        async addToCart() {
+            await this.addToCartButton.waitFor({ state: 'visible', timeout: 10000 });
+            await this.addToCartButton.click();
+        }
+
         async addTwoItemsToCart() {
-            await this.addToCartButton.click();
-            await this.addedToCartAlert.waitFor({state: 'visible'});
+            await this.addToCart();
+            await this.addedToCartAlert.waitFor({state: 'visible', timeout: 10000});
             await this.page.goto('/product/01M2D3BSKABY7W5AKJ8F6T5425');
-            await this.addToCartButton.click();
+            await this.addToCart();
             await this.addedToCartAlert.waitFor({state: 'visible'});
         }
 }
