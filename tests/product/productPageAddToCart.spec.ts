@@ -9,14 +9,14 @@ test.describe('Product Page: Add To Cart', () => {
 
     test('User can add any available item to the cart', async ({ page }) => {
         const productPage = new ProductPage(page);
-        await productPage.addToCart();
+        await productPage.addToCartButton.click();
         await expect(productPage.addedToCartAlert).toBeVisible();
     });
 
     test('User can add same item twice to the cart', async ({ page }) => {
         const productPage = new ProductPage(page);
-        await productPage.addToCart();
-        await productPage.addToCart();
+        await productPage.addToCartButton.click();
+        await productPage.addToCartButton.click();
         await expect(productPage.addedToCartAlert).toHaveCount(2);
     });         
 
