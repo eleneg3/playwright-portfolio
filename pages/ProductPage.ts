@@ -24,7 +24,7 @@ export class ProductPage {
         async addTwoItemsToCart() {
             await this.addToCartButton.click();
             await this.addedToCartAlert.waitFor({state: 'visible'});
-            await this.page.goto('/product/01M2D3BSKABY7W5AKJ8F6T5425');
+            await this.page.goto('/product/01M2DDNDRD8DVY9J1KKPKW569V');
             await this.addToCartButton.click();
             await this.addedToCartAlert.waitFor({state: 'visible'});
         }
