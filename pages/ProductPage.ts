@@ -7,6 +7,8 @@ export class ProductPage {
     readonly compareButton: Locator;
     readonly increaseQuantityButton: Locator;
     readonly decreaseQuantityButton: Locator;
+    readonly addedToCartAlert: Locator;
+    readonly cartItemCount: Locator;
 
         constructor(page: Page) {
             this.page = page;
@@ -15,5 +17,7 @@ export class ProductPage {
             this.compareButton = page.getByTestId('add-to-compare');
             this.increaseQuantityButton = page.getByTestId('increase-quantity');
             this.decreaseQuantityButton = page.getByTestId('decrease-quantity');
+            this.addedToCartAlert = page.getByRole('alert', {name: /Product added to shopping cart/});
+            this.cartItemCount = page.getByTestId('cart-quantity');
         }
 }
