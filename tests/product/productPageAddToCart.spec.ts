@@ -20,5 +20,11 @@ test.describe('Product Page: Add To Cart', () => {
         await expect(productPage.addedToCartAlert).toHaveCount(2);
     });         
 
+    test('User can add different items to the cart', async ({ page }) => {
+        const productPage = new ProductPage(page);
+        await productPage.addTwoItemsToCart();
+        await expect(productPage.cartItemCount).toHaveText('2');
+    });        
+
 });
 

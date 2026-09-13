@@ -1,4 +1,4 @@
-import { Page, Locator } from '@playwright/test';
+import { Page, Locator, expect } from '@playwright/test';
 
 export class ProductPage {
     readonly page: Page;
@@ -19,5 +19,13 @@ export class ProductPage {
             this.decreaseQuantityButton = page.getByTestId('decrease-quantity');
             this.addedToCartAlert = page.getByRole('alert', {name: /Product added to shopping cart/});
             this.cartItemCount = page.getByTestId('cart-quantity');
+        }
+
+        async addTwoItemsToCart() {
+            await this.addToCartButton.click();
+            await this.addedToCartAlert.waitFor({state: 'visible'});
+            await this.page.goto('/product/01M2D3BSKABY7W5AKJ8F6T5425');
+            await this.addToCartButton.click();
+            await this.addedToCartAlert.waitFor({state: 'visible'});
         }
 }
