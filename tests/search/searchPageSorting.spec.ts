@@ -16,6 +16,5 @@ test.describe('Search Page Sorting', () => {
             await expect(searchPage.sortByDropdown).toHaveValue(option.value);
     });
     }
-
 });
 

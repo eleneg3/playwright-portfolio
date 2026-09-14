@@ -40,4 +40,23 @@ export class SearchPage {
   async sortBy(option: string) {
     await this.sortByDropdown.selectOption({ value: option });
 }
+
+  async getDisplayedProductNames(): Promise<string[]> {
+    return this.page.getByTestId('product-name').allTextContents();
+  }
+
+  async getDisplayedProductPrices(): Promise<number[]> {
+    const prices = await this.page.getByTestId('product-price').allTextContents();
+
+    return prices.map(price =>
+        Number(price.replace('$', '').trim())
+    );
+  }
+
+  async getDisplayedCo2Ratings(): Promise<string[]> {
+    return this.page
+        .getByTestId('co2-rating-badge')
+        .locator('.co2-letter.active')
+        .allTextContents();
+  }
 }
