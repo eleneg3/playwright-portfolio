@@ -89,3 +89,12 @@ export const subcategories = [
     'Safety Gear',
     'Fasteners',
 ];
+
+export const sortingOptions = [
+    { label: 'Name (A - Z)', value: 'name,asc' },
+    { label: 'Name (Z - A)', value: 'name,desc' },
+    { label: 'Price (High - Low)', value: 'price,desc' },
+    { label: 'Price (Low - High)', value: 'price,asc' },
+    { label: 'CO₂ Rating (A - E)', value: 'co2_rating,asc' },
+    { label: 'CO₂ Rating (E - A)', value: 'co2_rating,desc' },
+]

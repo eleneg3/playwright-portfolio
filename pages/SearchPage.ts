@@ -38,6 +38,6 @@ export class SearchPage {
   }    
 
   async sortBy(option: string) {
-    await this.sortByDropdown.selectOption({ label: option });
+    await this.sortByDropdown.selectOption({ value: option });
 }
 }
