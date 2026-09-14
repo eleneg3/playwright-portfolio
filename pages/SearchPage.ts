@@ -2,9 +2,11 @@ import { Page, Locator } from '@playwright/test';
 
 export class SearchPage {
   readonly page: Page;
+  readonly sortByDropdown: Locator;
 
   constructor(page: Page) {
     this.page = page;
+    this.sortByDropdown = page.getByTestId('sort')
   }
 
   readonly category = (name: string) =>
@@ -34,4 +36,8 @@ export class SearchPage {
     await brandCheckbox.waitFor({ state: 'visible' });
     await brandCheckbox.check();
   }    
+
+  async sortBy(option: string) {
+    await this.sortByDropdown.selectOption({ label: option });
+}
 }
