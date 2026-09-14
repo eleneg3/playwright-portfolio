@@ -5,16 +5,16 @@ export class SearchPage {
   readonly sortByDropdown: Locator;
   readonly searchfield: Locator;
   readonly searchSubmitButton: Locator;
-  readonly searchResultsMessage: Locator;
   readonly searchCompleted: Locator;
+  readonly noResultsMessage: Locator;
 
   constructor(page: Page) {
     this.page = page;
     this.sortByDropdown = page.getByTestId('sort');
     this.searchfield = page.getByTestId('search-query');
     this.searchSubmitButton = page.getByTestId('search-submit');
-    this.searchResultsMessage = page.getByTestId('search-result-count');
     this.searchCompleted = page.getByTestId('search_completed');
+    this.noResultsMessage = page.getByTestId('no-results');
   }
 
   readonly category = (name: string) =>
