@@ -4,11 +4,17 @@ export class SearchPage {
   readonly page: Page;
   readonly sortByDropdown: Locator;
   readonly searchfield: Locator;
+  readonly searchSubmitButton: Locator;
+  readonly searchResultsMessage: Locator;
+  readonly searchCompleted: Locator;
 
   constructor(page: Page) {
     this.page = page;
     this.sortByDropdown = page.getByTestId('sort');
     this.searchfield = page.getByTestId('search-query');
+    this.searchSubmitButton = page.getByTestId('search-submit');
+    this.searchResultsMessage = page.getByTestId('search-result-count');
+    this.searchCompleted = page.getByTestId('search_completed');
   }
 
   readonly category = (name: string) =>
@@ -44,7 +50,8 @@ export class SearchPage {
 }
 
   async getDisplayedProductNames(): Promise<string[]> {
-    return this.page.getByTestId('product-name').allTextContents();
+    const names = await this.page.getByTestId('product-name').allTextContents();
+    return names.map(name => name.trim());
   }
 
   async getDisplayedProductPrices(): Promise<number[]> {
@@ -60,5 +67,11 @@ export class SearchPage {
         .getByTestId('co2-rating-badge')
         .locator('.co2-letter.active')
         .allTextContents();
+  }
+
+  async search(keyword: string) {
+    await this.searchfield.fill(keyword);
+    await this.searchSubmitButton.click();
+    await this.searchCompleted.waitFor({state: 'visible'});
   }
 }
