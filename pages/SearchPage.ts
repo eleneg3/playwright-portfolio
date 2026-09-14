@@ -3,10 +3,12 @@ import { Page, Locator } from '@playwright/test';
 export class SearchPage {
   readonly page: Page;
   readonly sortByDropdown: Locator;
+  readonly searchfield: Locator;
 
   constructor(page: Page) {
     this.page = page;
-    this.sortByDropdown = page.getByTestId('sort')
+    this.sortByDropdown = page.getByTestId('sort');
+    this.searchfield = page.getByTestId('search-query');
   }
 
   readonly category = (name: string) =>
